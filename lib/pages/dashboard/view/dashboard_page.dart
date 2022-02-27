@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_app/pages/dashboard/provider/bottom_bar_provider.dart';
+import 'package:todo_app/pages/todos/view/todos_page.dart';
 
 class DashboardPage extends ConsumerWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -18,6 +19,15 @@ class DashboardPage extends ConsumerWidget {
               BottomNavigationBarItem(
                   icon: Icon(Icons.list), label: 'Settings'),
             ]),
-        body: Column());
+        body: SafeArea(
+          child: IndexedStack(
+            index: bottomBarState,
+            children: [
+              TodosPage(),
+              Text('Hello Africa'),
+              Text('Hello Naija'),
+            ],
+          ),
+        ));
   }
 }
